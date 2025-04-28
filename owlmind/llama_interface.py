@@ -1,13 +1,4 @@
-# llama_interface.py
-
 from _pipeline import create_payload, model_req
-
-
-
-
-
-
-
 
 FEW_SHOT = """You are an AI tutor that helps students learn effectively. Below are examples of how you should respond:
 
@@ -20,13 +11,13 @@ Now process the following request:
 
 def run_llama_task(task_type: str, user_input: str):
     if task_type == "summarization":
-        message = f"""Summarize the following text while maintaining a neutral, general explanation. 
-Keep the summary under **40 words** for clarity.
+        message = f"""Summarize the following text in 5 to 7 bullet points.
+Make the summary informative, clear, and slightly conversational if helpful.
 
 Text: "{user_input}" """
-        temperature = 0.6
-        num_ctx = 150
-        num_predict = 200
+        temperature = 0.75
+        num_ctx = 300
+        num_predict = 350
 
     elif task_type == "flashcards":
         message = f"""Generate exactly **five** concise flashcards based on the topic.  
@@ -35,9 +26,9 @@ Each flashcard should include:
 - A **brief definition** (15 words max).
 
 Topic: "{user_input}" """
-        temperature = 0.5
-        num_ctx = 150
-        num_predict = 200
+        temperature = 0.6
+        num_ctx = 200
+        num_predict = 250
 
     elif task_type == "quiz":
         message = f"""Create a **3-question multiple-choice quiz** based on the given topic.  
@@ -45,9 +36,9 @@ Each question should have **exactly four answer choices (A, B, C, D)**.
 Mark the correct answer clearly **in parentheses** at the end.
 
 Topic: "{user_input}" """
-        temperature = 0.6
-        num_ctx = 150
-        num_predict = 200
+        temperature = 0.65
+        num_ctx = 250
+        num_predict = 300
 
     else:
         raise ValueError("Unsupported task type")

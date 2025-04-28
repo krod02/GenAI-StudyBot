@@ -3,8 +3,6 @@ from owlmind.discord import DiscordBot
 from owlmind.botengine import SimpleBrain
 from owlmind.llama_interface import run_llama_task
 
-
-
 if __name__ == '__main__':
 
     # load token from .env
